@@ -1,36 +1,118 @@
+/* ! document */
+
 body {
   min-height: 100vh;
   font-family: Helvetica, sans-serif;
   display: grid;
   place-items: center;
+  min-width: 800px;
+  background-color: black;
 }
 
 main {
-  padding: 0.1rem;
-  width: 80%;
+  width: 90%;
   text-align: center;
-  box-shadow: 0 0 5px 2px black;
+  box-shadow: 0 0 1px 1px black;
   position: relative;
+  display: grid;
+  width: 1200px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/* ! Sections */
+
+.information {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  max-width: 50%;
+  width: 298px;
+  max-height: 30%;
+  min-height: 200px;
+  background-color:  rgb(156, 93, 52);
+  font-size: 2.5rem;
+  grid-area: 1 / 1 / 2 / 3;
+  border-bottom: 2px ridge black;
+}
+
+.livefeed {
+  display: grid;
+  background-color: white;
+  grid-template-rows: repeat(2, 1fr);
+  grid-area: 1 / 2 / 2 / 5;
+  align-items: center;
+  width: 100%;
+  font-size: 3rem;
+  background-color:  rgb(156, 93, 52);
+  border-left: 1px ridge black;
+  border-bottom: 2px ridge black;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  max-width: 100%;
+  grid-area: 2 / 1 / 4 / 5;
+  width: 1200px;
   min-height: 200px;
-  max-height: 80%;
   min-width: 800px;
 }
+
+/* ! information classes */
+
+.player {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: navy;
+  border-bottom: 2px ridge black;
+  height: 100%;
+}
+
+.opp {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: maroon;
+  height: 100%;
+  border-top: 1px ridge black;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ! livefeed classes */
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0px 10%;
+}
+
+.scrollbar {
+  font-size: 2rem;
+}
+/* ! grid */
+
+  /* ? containers */
+
+    /* opponent goal */
 
 .container:nth-child(1) {
   grid-area: 1 / 1 / 3 / 2;
   flex-direction: column;
-  background-color: tan;
-  color: red;
+  background-color: rgb(196, 158, 109);
+  color: maroon;
   text-align: center;
-  width: 12.5% fill;
+  width: 150px;
+  min-width: 12.5%;
 }
+
+    /* opponent side */
 
 .container:nth-child(2) {
   grid-area: 1 / 2 / 2 / 3;
@@ -38,8 +120,11 @@ main {
   flex-direction: row-reverse;
   background-color: tan;
   color: maroon;
-  width: 75% fill;
+  width: 900px;
+  min-width: 75%;
 }
+
+    /* player side */
 
 .container:nth-child(3) {
   grid-area: 2 / 2 / 3 / 3;
@@ -47,32 +132,41 @@ main {
   flex-direction: row-reverse;
   background-color: tan;
   color: navy;
-  width: 75% fill;
+  width: 900px;
+  min-width: 75%;
 }
+
+    /* player goal */
 
 .container:nth-child(4) {
   grid-area: 1 / 3 / 3 / 4;
   flex-direction: column;
-  background-color: tan;
-  color: blue;
+  background-color: rgb(196, 158, 109);
+  color: navy;
   text-align: center;
-  width: 12.5% fill;
+  width: 150px;
+  min-width: 12.5%;
 }
+
+  /* ? pods */
 
 #p1-pod, #opp-pod {
-  min-height: 100px;
-  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  min-height: 100px;
+  width: 100%;
+  border: .5px ridge black;
 }
 
+  /* ? goals  */
+
 #p1-goal, #opp-goal {
-  min-height: 100px;
-  max-height: 30%;
-  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50%;
+  min-height: 100px;
   width: 100%;
 }

@@ -10,13 +10,21 @@
 <body>
   <title>Mancala</title>
   <main>
+    <section class="information">
+      <div class="player score">Player: 0</div>
+      <div class="opp score">Opponent: 0</div>
+    </section>
+    <section class="livefeed">
+      <div class="text turn">Turn</div>
+      <div class="text scrollbar">Scrolling Message</div>
+    </section>
     <section class="grid">
       <div class="container opp-container grid-item">
         <div class="goal" id="opp-goal">opp. goal</div>
         <div class="goal" id="opp-goal">opp. goal</div>
       </div>
       <div class="container opp-pods">
-        <span class="grid-item" id="opp-pod">6</span>
+        <div class="grid-item" id="opp-pod">6</div>
         <div class="grid-item" id="opp-pod">5</div>
         <div class="grid-item" id="opp-pod">4</div>
         <div class="grid-item" id="opp-pod">3</div>
