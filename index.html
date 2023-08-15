@@ -3,9 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Mancala</title>
+  <script defer src="main.js"></script>
+  <link rel="stylesheet" href="style.css"> <!-- pasted from fundraiser-challenge-start -->
 </head>
 <body>
-  <h1>Hello World</h1>
+  <title>Mancala</title>
+  <main>
+    <section class="grid">
+      <div class="container opp-container grid-item">
+        <div class="goal" id="opp-goal">opp. goal</div>
+        <div class="goal" id="opp-goal">opp. goal</div>
+      </div>
+      <div class="container opp-pods">
+        <span class="grid-item" id="opp-pod">6</span>
+        <div class="grid-item" id="opp-pod">5</div>
+        <div class="grid-item" id="opp-pod">4</div>
+        <div class="grid-item" id="opp-pod">3</div>
+        <div class="grid-item" id="opp-pod">2</div>
+        <div class="grid-item" id="opp-pod">1</div>
+      </div>
+
+      <div class="container p1-pods">
+        <div class="grid-item" id="p1-pod">1</div>
+        <div class="grid-item" id="p1-pod">2</div>
+        <div class="grid-item" id="p1-pod">3</div>
+        <div class="grid-item" id="p1-pod">4</div>
+        <div class="grid-item" id="p1-pod">5</div>
+        <div class="grid-item" id="p1-pod">6</div>
+      </div>
+
+      <div class="container p1-container grid-item">
+        <div class="goal" id="p1-goal">p1 goal</div>
+        <div class="goal" id="p1-goal">p1 goal</div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
