@@ -65,6 +65,7 @@ function makeMove(podIndex) {
     gameState.playerPods[podIndex] = 0 
     let currentPodIndex = podIndex
     let marbleCount = 0
+    let currentPods = gameState.playerPods
     const moveMarble = () => {
       currentPodIndex = (currentPodIndex + 1)
       if (marbleCount < marbles) {
@@ -73,28 +74,82 @@ function makeMove(podIndex) {
             gameState.playerScore++
             gameState.playerGoal[0]++
           } 
-          gameState.playerPods[currentPodIndex]++
+          currentPods[currentPodIndex]++
           updateUI()
           marbleCount++
           setTimeout(moveMarble, 500)
         } else if (currentPodIndex >= 7) {
           currentPodIndex = 0
-          gameState.oppPods[currentPodIndex]++
+          currentPods = gameState.oppPods === currentPods ? gameState.playerPods : gameState.oppPods
+          currentPods[currentPodIndex]++
           updateUI()
           marbleCount++
           setTimeout(moveMarble, 500)
         }
-      } else if ( gameState.playerPods[currentPodIndex] < 6 && gameState.currentPlayer === "player" ) {
-        const oppIndex = 5 - currentPodIndex
-        if (gameState.oppPods[oppIndex] > 0) {
-          gameState.playerScore += gameState.oppPods[oppIndex]
-          gameState.playerGoal[0] += gameState.oppPods[oppIndex]
-          gameState.oppPods[oppIndex] = 0
+      } else if (currentPodIndex === 7) {
+        initialize()
+      } else {
+        switchTurn()
+        updateTurn(`${gameState.currentPlayer}'s Turn!`)
+        if (currentPodIndex[podIndex] === 1) {
+          const oppIndex = currentPodIndex
+          if (gameState.oppPods[oppIndex] > 0) {
+            gameState.playerScore += gameState.oppPods[oppIndex]
+            gameState.playerGoal[0] += gameState.oppPods[oppIndex]
+            gameState.oppPods[oppIndex] = 0
+          }
         }
+        oppTurn()
       }
       updateUI()
-      switchTurn()
-      updateTurn(`${gameState.currentPlayer}'s Turn!`)
+    }
+    moveMarble()
+  }
+}
+
+function oppMove(podIndex) {
+  if (gameState.currentPlayer === "opponent" && gameState.oppPods[podIndex] > 0) {
+    const marbles = gameState.oppPods[podIndex]
+    gameState.oppPods[podIndex] = 0
+    let currentPodIndex = podIndex
+    let marbleCount = 0
+    let currentPods = gameState.oppPods
+    const moveMarble = () => {
+      currentPodIndex = (currentPodIndex + 1)
+      if (marbleCount < marbles) {
+        if (currentPodIndex < 7) {
+          if (currentPodIndex === 6) {
+            gameState.oppScore++
+            gameState.oppGoal[0]++
+          }
+          currentPods[currentPodIndex]++
+          updateUI()
+          marbleCount++
+          setTimeout(moveMarble, 500)
+        } else if (currentPodIndex >= 7) {
+          currentPodIndex = 0
+          currentPods = gameState.playerPods === currentPods ? gameState.oppPods : gameState.playerPods
+          currentPods[currentPodIndex]++
+          updateUI()
+          marbleCount++
+          setTimeout(moveMarble, 500)
+        }
+      } else if (currentPodIndex === 7) {
+        oppTurn()
+      } else {
+        switchTurn()
+        updateTurn(`${gameState.currentPlayer}'s Turn!`)
+        if (currentPodIndex[podIndex] === 1) {
+          const playerIndex = currentPodIndex
+          if (gameState.playerPods[playerIndex] > 0) {
+            gameState.oppScore += gameState.playerPods[playerIndex]
+            gameState.oppGoal[0] += gameState.playerPods[playerIndex]
+            gameState.playerPods[playerIndex] = 0
+          }
+        }
+        initialize()
+      }
+      updateUI()
     }
     moveMarble()
   }
@@ -102,47 +157,11 @@ function makeMove(podIndex) {
 
 
 
-
-
-function oppMove(podIndex) {
-  const marbles = gameState.oppPods[podIndex]
-  gameState.oppPods[podIndex] = 0
-  let currentPodIndex = podIndex
-  let marbleCount = 0
-  const moveMarble = () => {
-    currentPodIndex = (currentPodIndex + 1)
-    if (currentPodIndex !== 11) {
-      if (currentPodIndex === 5) {
-        gameState.oppScore++
-      } else {
-        gameState.oppPods[currentPodIndex]++
-      }
-      updateUI()
-      marbleCount++
-      if (marbleCount < marbles) {
-        setTimeout(moveMarble, 500)
-      } else {
-        updateUI()
-        switchTurn()
-        updateTurn(`${gameState.currentPlayer}'s Turn!`)
-      }
-    } else {
-      moveMarble()
-    }
-  }
-  moveMarble()
-}
-
 function oppTurn() {
-  for (let i = 0; i < 6; i++) {
-    const marblesInPit = gameState.oppPods[i]
-    if (marblesInPit === i + 1) {
-      oppMove(i)
-      return
-    }
+  if (gameState.currentPlayer === "opponent") {
+    const podIndex = Math.floor(Math.random() * 6)
+    oppMove(podIndex)
   }
-  const randomPod = Math.floor(Math.random() * 6)
-  oppMove(randomPod)
 }
 
 function handleOppTurn() {
@@ -211,5 +230,4 @@ function switchTurn() {
 
 initialize()
 updateTurn("Player's Turn!")
-handleOppTurn()
 console.log("test over")

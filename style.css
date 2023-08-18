@@ -159,6 +159,25 @@ main {
   border: .5px ridge black;
 }
 
+.opp-pod:nth-of-type(1) {
+  order: 6
+}
+.opp-pod:nth-of-type(2) {
+  order: 5
+}
+.opp-pod:nth-of-type(3) {
+  order: 4
+}
+.opp-pod:nth-of-type(4) {
+  order: 3
+}
+.opp-pod:nth-of-type(5) {
+  order: 2
+}
+.opp-pod:nth-of-type(6) {
+  order: 1
+}
+
 .marble {
   height: 25px;
   width: 25px;
