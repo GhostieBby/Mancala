@@ -10,61 +10,117 @@
 <body>
   <title>Mancala</title>
   <main>
+
     <section class="information">
-      <div class="player score">Player: 0</div>
-      <div class="opp score">Opponent: 0</div>
+      <div class="playerScore" id="p1-score">Player: 0</div>
+      <div class="oppScore" id="opp-score">Opponent: 0</div>
     </section>
+
     <section class="livefeed">
       <div class="text turn">Turn</div>
       <div class="text scrollbar">Scrolling Message</div>
     </section>
+
     <section class="grid">
-      <div class="container opp-container grid-item">
-        <div class="goal" id="opp-goal">opp. goal</div>
-        <div class="goal" id="opp-goal">opp. goal</div>
+      <div class="container opp-goals">
+        <div class="grid-item opp-goal" id="goal">
+
+        </div>
       </div>
       <div class="container opp-pods">
-        <div class="grid-item" id="opp-pod">
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
-          <div class="marble" id="empty"></div>
+        <div class="grid-item opp-pod" id="opp-pod6">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
         </div>
-        <div class="grid-item" id="opp-pod">5</div>
-        <div class="grid-item" id="opp-pod">4</div>
-        <div class="grid-item" id="opp-pod">3</div>
-        <div class="grid-item" id="opp-pod">2</div>
-        <div class="grid-item" id="opp-pod">1</div>
+        <div class="grid-item opp-pod" id="opp-pod5">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item opp-pod" id="opp-pod4">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item opp-pod" id="opp-pod3">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item opp-pod" id="opp-pod2">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item opp-pod" id="opp-pod1">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
       </div>
 
       <div class="container p1-pods">
-        <div class="grid-item" id="p1-pod">1</div>
-        <div class="grid-item" id="p1-pod">2</div>
-        <div class="grid-item" id="p1-pod">3</div>
-        <div class="grid-item" id="p1-pod">4</div>
-        <div class="grid-item" id="p1-pod">5</div>
-        <div class="grid-item" id="p1-pod">6</div>
+        <div class="grid-item p1-pod" id="p1-pod1">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item p1-pod" id="p1-pod2">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item p1-pod" id="p1-pod3">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item p1-pod" id="p1-pod4">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item p1-pod" id="p1-pod5">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
+        <div class="grid-item p1-pod" id="p1-pod6">
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+          <div class="marble" id="full"></div>
+
+        </div>
       </div>
 
-      <div class="container p1-container grid-item">
-        <div class="goal" id="p1-goal">p1 goal</div>
-        <div class="goal" id="p1-goal">p1 goal</div>
+      <div class="container p1-goals">
+        <div class="grid-item p1-goal" id="goal">
+          
+        </div>
       </div>
     </section>
   </main>

@@ -14,6 +14,6 @@ To steal from your opponent's side of the board, a few conditions have to be met
 
 The best players make use of these opportunities while simultaneously protecting their own!
 
-Something to keep in mind is that when you are going counter-clockwise around the board to place your marbles, you have to drop one in their goal, too!
+Something to keep in mind is that when you are going counter-clockwise around the board to place your marbles, you do not have to drop one in their goal!
 
 Once there are no more marbles to be moved, the game ends!
