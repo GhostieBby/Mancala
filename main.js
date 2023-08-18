@@ -70,7 +70,7 @@ function makeMove(podIndex) {
       currentPodIndex = (currentPodIndex + 1)
       if (marbleCount < marbles) {
         if (currentPodIndex < 7) {
-          if (currentPodIndex === 6) {
+          if (currentPodIndex === 6 && currentPods === gameState.playerPods) {
             gameState.playerScore++
             gameState.playerGoal[0]++
           } 
@@ -108,7 +108,7 @@ function makeMove(podIndex) {
 }
 
 function oppMove(podIndex) {
-  if (gameState.currentPlayer === "opponent" && gameState.oppPods[podIndex] > 0) {
+  if (gameState.currentPlayer === "opponent") {
     const marbles = gameState.oppPods[podIndex]
     gameState.oppPods[podIndex] = 0
     let currentPodIndex = podIndex
@@ -118,7 +118,7 @@ function oppMove(podIndex) {
       currentPodIndex = (currentPodIndex + 1)
       if (marbleCount < marbles) {
         if (currentPodIndex < 7) {
-          if (currentPodIndex === 6) {
+          if (currentPodIndex === 6 && currentPods === gameState.oppPods) {
             gameState.oppScore++
             gameState.oppGoal[0]++
           }
