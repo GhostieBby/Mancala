@@ -17,3 +17,10 @@ The best players make use of these opportunities while simultaneously protecting
 Something to keep in mind is that when you are going counter-clockwise around the board to place your marbles, you do not have to drop one in their goal!
 
 Once there are no more marbles to be moved, the game ends!
+
+
+The first big issue I ran into while creating this game was getting everything aligned correctly within CSS. Eventually I realized I had to treat the Mancala board as four separate containers, with the two middle ones stacked atop one another.
+
+The next issue I had, and perhaps the most difficult of all, was getting the marbles to distribute across the opposing board once one had been placed in the current player's goal. I spent the most time on this issue, even at one point considering re-building the game from the ground-up.
+
+Working out the finer details was an issue, but it was perhaps the most entertaining of the bunch. The process of making tiny changes throughout and seeing how impactful those changes can be helped me see the beauty in what I had created.

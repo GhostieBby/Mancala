@@ -188,9 +188,15 @@ main {
   background-color: transparent;
 }
 
+.opp-selected {
+  border: 2cap solid #0056b3;
+  background-color: rgb(209, 153, 81);
+}
+
+
   /* ? goals  */
 
-.goal {
+#goal {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
