@@ -67,7 +67,6 @@ function makeMove(podIndex) {
     let marbleCount = 0
     let currentPods = gameState.playerPods
     const moveMarble = () => {
-      console.log(currentPodIndex)
       currentPodIndex = (currentPodIndex + 1)
       if (marbleCount < marbles) {
         if (currentPodIndex < 7) {
@@ -89,18 +88,58 @@ function makeMove(podIndex) {
         }
       } else if (currentPodIndex === 7) {
         initialize()
-      } else {
-        switchTurn()
-        updateTurn(`${gameState.currentPlayer}'s Turn!`)
-        if (currentPodIndex[podIndex] === 1) {
-          const oppIndex = currentPodIndex
-          if (gameState.oppPods[oppIndex] > 0) {
-            gameState.playerScore += gameState.oppPods[oppIndex]
-            gameState.playerGoal[0] += gameState.oppPods[oppIndex]
-            gameState.oppPods[oppIndex] = 0
+      } else if (currentPodIndex < 7) {
+        if (currentPods[currentPodIndex - 1] === 1 && gameState.currentPlayer === "Player") {
+          if (currentPodIndex === 6 && gameState.oppPods[0] >= 1 && gameState.playerPods[5] === 1) {
+            gameState.playerScore += gameState.oppPods[0]
+            gameState.playerScore += gameState.playerPods[5]
+            gameState.playerGoal[0] += gameState.oppPods[0]
+            gameState.playerGoal[0] += gameState.playerPods[5]
+            gameState.oppPods[0] = 0
+            gameState.playerPods[5] = 0
+          } else if (currentPodIndex === 5 && gameState.oppPods[1] > 0 && gameState.playerPods[4] === 1) {
+            gameState.playerScore += gameState.oppPods[1]
+            gameState.playerScore += gameState.playerPods[4]
+            gameState.playerGoal[0] += gameState.oppPods[1]
+            gameState.playerGoal[0] += gameState.playerPods[4]
+            gameState.oppPods[1] = 0
+            gameState.playerPods[4] = 0
+          } else if (currentPodIndex === 4 && gameState.oppPods[2] > 0 && gameState.playerPods[3] === 1) {
+            gameState.playerScore += gameState.oppPods[2]
+            gameState.playerScore += gameState.playerPods[3]
+            gameState.playerGoal[0] += gameState.oppPods[2]
+            gameState.playerGoal[0] += gameState.playerPods[3]
+            gameState.oppPods[2] = 0
+            gameState.playerPods[3] = 0
+          } else if (currentPodIndex === 3 && gameState.oppPods[3] > 0 && gameState.playerPods[2] === 1) {
+            gameState.playerScore += gameState.oppPods[3]
+            gameState.playerScore += gameState.playerPods[2]
+            gameState.playerGoal[0] += gameState.oppPods[3]
+            gameState.playerGoal[0] += gameState.playerPods[2]
+            gameState.oppPods[3] = 0
+            gameState.playerPods[2] = 0
+          } else if (currentPodIndex === 2 && gameState.oppPods[4] > 0 && gameState.playerPods[1] === 1) {
+            gameState.playerScore += gameState.oppPods[4]
+            gameState.playerScore += gameState.playerPods[1]
+            gameState.playerGoal[0] += gameState.oppPods[4]
+            gameState.playerGoal[0] += gameState.playerPods[1]
+            gameState.oppPods[4] = 0
+            gameState.playerPods[1] = 0
+          } else if (currentPodIndex === 1 && gameState.oppPods[5] > 0 && gameState.playerPods[0] === 1){
+            gameState.playerScore += gameState.oppPods[5]
+            gameState.playerScore += gameState.playerPods[0]
+            gameState.playerGoal[0] += gameState.oppPods[5]
+            gameState.playerGoal[0] += gameState.playerPods[0]
+            gameState.oppPods[5] = 0
+            gameState.playerPods[0] = 0
           }
+          
+          console.log(gameState.currentPlayer)
         }
+        setTimeout(switchTurn(), 100)
+        setTimeout(updateTurn(`${gameState.currentPlayer}'s Turn!`), 400)
         oppTurn()
+        setTimeout(console.log(gameState.currentPlayer), 3000)
       }
       updateUI()
     }
@@ -139,18 +178,63 @@ function oppMove(podIndex, oppSelectedPod) {
         oppSelectedPod.classList.remove("opp-selected")
         oppTurn()
       } else {
-        oppSelectedPod.classList.remove("opp-selected")
-        switchTurn()
-        updateTurn(`${gameState.currentPlayer}'s Turn!`)
-        if (currentPodIndex[podIndex] === 1) {
-          const playerIndex = currentPodIndex
-          if (gameState.playerPods[playerIndex] > 0) {
-            gameState.oppScore += gameState.playerPods[playerIndex]
-            gameState.oppGoal[0] += gameState.playerPods[playerIndex]
-            gameState.playerPods[playerIndex] = 0
+        if (currentPodIndex < 7 && currentPods[currentPodIndex - 1] === 1 && gameState.currentPlayer === "Opponent") {
+          if (currentPodIndex === 6 && gameState.playerPods[0] > 0 && gameState.oppPods[5] === 1) {
+            const playerIndex = 1
+            gameState.oppScore += gameState.playerPods[0]
+            gameState.oppScore += gameState.oppPods[5]
+            gameState.oppGoal[0] += gameState.playerPods[0]
+            gameState.oppGoal[0] += gameState.oppPods[5]
+            gameState.playerPods[0] = 0
+            gameState.oppPods[5] = 0
+          } else if (currentPodIndex === 5 && gameState.playerPods[1] > 0 && gameState.oppPods[4] === 1) {
+            const playerIndex = 2
+            gameState.oppScore += gameState.playerPods[1]
+            gameState.oppScore += gameState.oppPods[4]
+            gameState.oppGoal[0] += gameState.playerPods[1]
+            gameState.oppGoal[0] += gameState.oppPods[4]
+            gameState.playerPods[1] = 0
+            gameState.oppPods[4] = 0
+          } else if (currentPodIndex === 4 && gameState.playerPods[2] > 0 && gameState.oppPods[3] === 1) {
+            const playerIndex = 3
+            gameState.oppScore += gameState.playerPods[2]
+            gameState.oppScore += gameState.oppPods[3]
+            gameState.oppGoal[0] += gameState.playerPods[2]
+            gameState.oppGoal[0] += gameState.oppPods[3]
+            gameState.playerPods[2] = 0
+            gameState.oppPods[3] = 0
+          } else if (currentPodIndex === 3 && gameState.playerPods[3] > 0 && gameState.oppPods[2] === 1) {
+            const playerIndex = 4
+            gameState.oppScore += gameState.playerPods[3]
+            gameState.oppScore += gameState.oppPods[2]
+            gameState.oppGoal[0] += gameState.playerPods[3]
+            gameState.oppGoal[0] += gameState.oppPods[2]
+            gameState.playerPods[3] = 0
+            gameState.oppPods[2] = 0
+          } else if (currentPodIndex === 2 && gameState.playerPods[4] > 0 && gameState.oppPods[1] === 1) {
+            const playerIndex = 5
+            gameState.oppScore += gameState.playerPods[4]
+            gameState.oppScore += gameState.oppPods[1]
+            gameState.oppGoal[0] += gameState.playerPods[4]
+            gameState.oppGoal[0] += gameState.oppPods[1]
+            gameState.playerPods[4] = 0
+            gameState.oppPods[1] = 0
+          } else if (currentPodIndex === 1 && gameState.playerPods[5] > 0 && gameState.oppPods[0] === 1){
+            const playerIndex = 6
+            gameState.oppScore += gameState.playerPods[5]
+            gameState.oppScore += gameState.oppPods[0]
+            gameState.oppGoal[0] += gameState.playerPods[5]
+            gameState.oppGoal[0] += gameState.oppPods[0]
+            gameState.playerPods[5] = 0
+            gameState.oppPods[0] = 0
           }
+          console.log(gameState.currentPlayer)
         }
-        initialize()
+        oppSelectedPod.classList.remove("opp-selected")
+        setTimeout(switchTurn(), 100)
+        setTimeout(updateTurn(`${gameState.currentPlayer}'s Turn!`), 400)
+        oppTurn()
+        setTimeout(console.log(gameState.currentPlayer), 3000)
       }
       updateUI()
     }
